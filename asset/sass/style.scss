@@ -9,3 +9,7 @@
 @media screen and (max-width:640px) {
     @import "mobile";
 }
+
+@media screen {
+    @import "oldmaps";
+}

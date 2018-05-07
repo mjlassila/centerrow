@@ -1,5 +1,5 @@
 {
-  "name": "centerrow",
+  "name": "oldmaps",
   "version": "1.0.0",
   "description": "A theme for Omeka S.",
   "main": "gulpfile.js",
@@ -8,18 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omeka-s-themes/centerrow.git"
+    "url": "git+https://github.com/mjlassila/oldmaps.git"
   },
   "keywords": [
     "omeka-s",
-    "theme"
+    "theme",
+    "customized",
+    "jyu-osc"
   ],
-  "author": "RRCHNM",
+  "author": "RRCHNM, Matti Lassila",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/omeka-s-themes/centerrow/issues"
+    "url": "https://github.com/mjlassila/oldmaps/issues"
   },
-  "homepage": "https://github.com/omeka-s-themes/centerrow#readme",
+  "homepage": "https://github.com/mjlassila/oldmaps#readme",
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "gulp": "^3.9.1",

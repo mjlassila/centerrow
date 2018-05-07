@@ -18,8 +18,7 @@ foreach ($item->media() as $media) {
 }
 ?>
 
-<?php echo $this->pageTitle($item->displayTitle(), 2); ?>
-<h3><?php echo $this->translate('Item'); ?></h3>
+<?php echo $this->pageTitle($item->displayTitle() . ' (' . $this->translate($item->displayResourceClassLabel()) .')' , 2); ?>
 <?php if (count($lightMedia) > 0): ?>
 <ul id="itemfiles" class="media-list">
     <?php foreach ($lightMedia as $media): ?>
@@ -30,29 +29,58 @@ foreach ($item->media() as $media) {
     <?php endforeach; ?>
 </ul>
 <?php endif; ?>
+<?php if ($item->value('collection:primaryCollection') || $item->value('collection:secondaryCollection')): ?>
+        <div class="collection-info">
+        <?php if ($primaryCollection = $item->value('collection:primaryCollection')): ?>
+        <span class="collection-primary"><?php echo $primaryCollection; ?></span>
+        <?php endif; ?>
+        <?php if ($secondaryCollection = $item->value('collection:secondaryCollection', ['all' => false])): ?>
+        <span class="collection-secondary"><?php echo $secondaryCollection; ?></span>
+        <?php endif; ?>
+        </div>
+<?php endif; ?>
+
+
+<div class="item-information">
+<?php if ($description = $item->value('dcterms:description')): ?>
+<div class="property dcterms-description">
+  <div class="values">
+    <div class="value"><?php echo $description; ?></div>
+  </div>
+</div>
+<?php endif; ?>
+
+<?php if ($creator = $item->value('dcterms:creator')): ?>
+<div class="property dcterms-creator">
+  <div class="values">
+    <div class="value"><?php echo $creator; ?></div>
+  </div>
+</div>
+<?php endif; ?>
+
+<?php if ($created = $item->value('dcterms:created')): ?>
+<div class="property dcterms-created">
+  <div class="values">
+    <div class="value"><?php echo $created; ?></div>
+  </div>
+</div>
+<?php endif; ?>
+
+<?php if ($places= $item->value('dcterms:spatial', ['all'=>true])): ?>
+<div class="property dcterms-spatial">
+  <div class="values">
+    <?php foreach ($places as $place): ?>
+    <div class="value"><?php echo $place; ?></div>
+  <?php endforeach;?>
+  </div>
+</div>
+<?php endif; ?>
+
+</div>
 
 <?php echo $item->displayValues(); ?>
 
-<?php if (count($otherMedia) > 0): ?>
-<div id="other-media" class="property">
-    <h4><?php echo $this->translate('Other Media'); ?></h4>
-    <?php foreach($otherMedia as $media): ?>
-    <div class="value">
-        <a href="<?php echo $media->siteUrl(); ?>"><?php echo $media->displayTitle(); ?></a>
-    </div>
-    <?php endforeach; ?>
-</div>
-<?php endif; ?>
 
-<?php $itemSets = $item->itemSets(); ?>
-<?php if (count($itemSets) > 0): ?>
-<div class="property">
-    <h4><?php echo $this->translate('Item sets'); ?></h4>
-    <?php foreach ($item->itemSets() as $itemSet): ?>
-    <div class="value"><a href="<?php echo $escape($itemSet->url()); ?>"><?php echo $itemSet->displayTitle(); ?></a></div>
-    <?php endforeach; ?>
-</div>
-<?php endif; ?>
 
 <?php
 $page = $this->params()->fromQuery('page', 1);
@@ -65,6 +93,26 @@ $subjectValues = $item->displaySubjectValues($page, 25, $property);
     <?php echo $subjectValues; ?>
 </div>
 <?php endif; ?>
+
+
+<?php
+
+
+$embedMedia = $this->siteSetting('item_media_embed', false);
+/* @var $itemMedia Omeka\Api\Representation\MediaRepresentation[] */
+$itemMedia = $item->media();
+
+if ($embedMedia && $itemMedia)
+  foreach ($itemMedia as $medium)
+    if(stristr($medium->displayTitle(), 'transcription')) {
+      echo $medium->render();
+      break;
+    }
+
+
+
+ ?>
+
 
 <?php $this->trigger('view.show.after'); ?>
 
