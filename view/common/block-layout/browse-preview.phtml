@@ -1,24 +1,9 @@
-<?php $escape = $this->plugin('escapeHtml');?>
-<?php $this->htmlElement('body')->appendAttribute('class', 'item resource browse');
-$query = $this->params()->fromQuery(); ?>
-<?php if (isset($itemSet)): ?>
-<?php $this->htmlElement('body')->appendAttribute('class', 'item-set');
-    $query['item_set_id'] = $itemSet->id(); ?>
+<div class="preview-block">
+
+<?php if ($this->heading): ?>
+<h2><?php echo $this->heading; ?></h2>
 <?php endif; ?>
 
-<?php if (isset($itemSet)): ?>
-    <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
-    <div class="metadata">
-        <?php echo $itemSet->displayValues(); ?>
-    </div>
-    <?php echo $this->pageTitle($this->translate('Items'), 3); ?>
-<?php else: ?>
-    <?php echo $this->pageTitle($this->translate('Items'), 2); ?>
-<?php endif; ?>
-
-<?php echo $this->searchFilters(); ?>
-<?php echo $this->hyperlink($this->translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
-<?php echo $this->pagination(); ?>
 <ul class="resource-list">
     <?php foreach ($items as $item): ?>
     <li class="item resource">
@@ -52,5 +37,12 @@ $query = $this->params()->fromQuery(); ?>
     </li>
     <?php endforeach; ?>
 </ul>
-<?php echo $this->pagination(); ?>
-<?php $this->trigger('view.browse.after'); ?>
+
+<?php
+$linkText = $this->linkText == '' ? $this->translate('Browse all') : $this->linkText;
+echo $this->hyperlink($linkText, $this->url(
+    'site/resource', ['controller' => 'item', 'action' => 'browse'], ['query' => $this->query], true
+));
+?>
+
+</div>
