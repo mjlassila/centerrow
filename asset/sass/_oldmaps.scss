@@ -122,6 +122,7 @@ h2 {
 
 .publication-list > li {
       list-style: none;
+      line-height: 1.1 * $base-line-height;
     }
 
 .publication-list > li:before {
