@@ -119,3 +119,20 @@ h2 {
     font-size: 22.5px;
     margin: 0em;
 }
+
+.publication-list li {
+      list-style: none;
+    }
+
+.publication-list li:before {
+      /* For a square bullet */
+      *content:'\25A0';
+      display: block;
+      position: relative;
+      max-width: 0px;
+      max-height: 0px;
+      left: -10px;
+      top: -0px;
+      color: #CCCC9A;
+      font-size: 20px;
+    }
