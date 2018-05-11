@@ -120,11 +120,11 @@ h2 {
     margin: 0em;
 }
 
-.publication-list li {
+.publication-list > li {
       list-style: none;
     }
 
-.publication-list li:before {
+.publication-list > li:before {
       /* For a square bullet */
       *content:'\25A0';
       display: block;
