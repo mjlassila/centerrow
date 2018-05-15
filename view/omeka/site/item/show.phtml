@@ -29,54 +29,6 @@ foreach ($item->media() as $media) {
     <?php endforeach; ?>
 </ul>
 <?php endif; ?>
-<?php if ($item->value('collection:primaryCollection') || $item->value('collection:secondaryCollection')): ?>
-        <div class="collection-info">
-        <?php if ($primaryCollection = $item->value('collection:primaryCollection')): ?>
-        <span class="collection-primary"><?php echo $primaryCollection; ?></span>
-        <?php endif; ?>
-        <?php if ($secondaryCollection = $item->value('collection:secondaryCollection', ['all' => false])): ?>
-        <span class="collection-secondary"><?php echo $secondaryCollection; ?></span>
-        <?php endif; ?>
-        </div>
-<?php endif; ?>
-
-
-<div class="item-information">
-<?php if ($description = $item->value('dcterms:description')): ?>
-<div class="property dcterms-description">
-  <div class="values">
-    <div class="value"><?php echo $description; ?></div>
-  </div>
-</div>
-<?php endif; ?>
-
-<?php if ($creator = $item->value('dcterms:creator')): ?>
-<div class="property dcterms-creator">
-  <div class="values">
-    <div class="value"><?php echo $creator; ?></div>
-  </div>
-</div>
-<?php endif; ?>
-
-<?php if ($created = $item->value('dcterms:created')): ?>
-<div class="property dcterms-created">
-  <div class="values">
-    <div class="value"><?php echo $created; ?></div>
-  </div>
-</div>
-<?php endif; ?>
-
-<?php if ($places= $item->value('dcterms:spatial', ['all'=>true])): ?>
-<div class="property dcterms-spatial">
-  <div class="values">
-    <?php foreach ($places as $place): ?>
-    <div class="value"><?php echo $place; ?></div>
-  <?php endforeach;?>
-  </div>
-</div>
-<?php endif; ?>
-
-</div>
 
 <?php echo $item->displayValues(); ?>
 

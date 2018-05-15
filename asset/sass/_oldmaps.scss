@@ -58,6 +58,30 @@ h2 {
     text-align: left;
 }
 
+h3 {
+    font-size: 1.3 * $base-font-size;
+    margin-bottom: $spacing-l;
+    line-height: $base-line-height;
+    font-weight: normal;
+    text-align: left;
+}
+
+h4 {
+    font-size: 1.1 * $base-font-size;
+    margin-bottom: $spacing-l;
+    line-height: $base-line-height;
+    font-weight: normal;
+    text-align: left;
+}
+
+h5 {
+    font-size:  $base-font-size;
+    margin-bottom: $spacing-l;
+    line-height: $base-line-height;
+    font-weight: normal;
+    text-align: left;
+}
+
 .page #content .sub-menu {
     padding: 0 gutter() $spacing-l 0;
     width: span(3 of 16);
@@ -137,3 +161,19 @@ h2 {
       color: #CCCC9A;
       font-size: 20px;
     }
+
+    p {
+    margin: $spacing-m 0;
+}
+
+.blocks {
+    padding-left:$spacing-s;
+}
+
+.left.large.file {
+    float:none;
+}
+
+.collection-info > span {
+    font-size: 0.7* $base-font-size;
+}
