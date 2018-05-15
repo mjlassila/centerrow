@@ -183,8 +183,16 @@ h5 {
     margin-left:0px;
 }
 
-.preview-block > h4, .resource-list > h4 {
-    margin-bottom:3px;
-    margin-top:3px;
-    line-height:15px;
+.browse .resource h4 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.preview-block .resource h4 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 3px;
+    margin-top: 3px;
 }
