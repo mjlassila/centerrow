@@ -31,8 +31,10 @@ $query = $this->params()->fromQuery(); ?>
         <?php if ($primaryCollection = $item->value('collection:primaryCollection')): ?>
         <span class="collection-primary"><?php echo $primaryCollection; ?></span>
         <?php endif; ?>
-        <?php if ($secondaryCollection = $item->value('collection:secondaryCollection', ['all' => false])): ?>
+        <?php if ($secondaryCollection = $item->value('collection:secondaryCollection', ['all' => false]) && $item->value('collection:primaryCollection')): ?>
         <span class="collection-secondary"> > <?php echo $secondaryCollection; ?></span>
+        <?php else: ?>
+        <span class="collection-secondary"><?php echo $secondaryCollection; ?></span>
         <?php endif; ?>
         </div>
         <?php endif; ?>

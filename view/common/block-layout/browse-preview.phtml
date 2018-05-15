@@ -11,25 +11,17 @@
         <?php echo $item->linkRaw($this->thumbnail($primaryMedia, 'medium')); ?>
         <?php endif; ?>
         <h4><?php echo $item->link($item->displayTitle()); ?></h4>
-        <?php echo $this->translate($item->displayResourceClassLabel()); ?>
-        <?php if ($date = $item->value('dcterms:date')): ?>
-        <div class="date"><?php echo $date; ?></div>
-        <?php endif; ?>
         <?php if ($item->value('collection:primaryCollection') || $item->value('collection:secondaryCollection')): ?>
         <div class="collection-info">
         <?php if ($primaryCollection = $item->value('collection:primaryCollection')): ?>
         <span class="collection-primary"><?php echo $primaryCollection; ?></span>
         <?php endif; ?>
-        <?php if ($secondaryCollection = $item->value('collection:secondaryCollection', ['all' => false])): ?>
+        <?php if ($secondaryCollection = $item->value('collection:secondaryCollection', ['all' => false]) && $item->value('collection:primaryCollection')): ?>
         <span class="collection-secondary"> > <?php echo $secondaryCollection; ?></span>
+        <?php else: ?>
+        <span class="collection-secondary"><?php echo $secondaryCollection; ?></span>
         <?php endif; ?>
         </div>
-        <?php endif; ?>
-        <?php if ($dateIssued = $item->value('dcterms:created')): ?>
-        <div class="date-issued"><?php echo $dateIssued; ?></div>
-        <?php endif; ?>
-        <?php if ($creator = $item->value('dcterms:creator')): ?>
-        <div class="creator"><?php echo $creator; ?></div>
         <?php endif; ?>
         <?php if ($description = $item->value('dcterms:description')): ?>
         <div class="description"><?php echo mb_strimwidth($description,0,120,'[...]'); ?></div>
