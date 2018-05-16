@@ -198,11 +198,7 @@ h5 {
 }
 
 .metadata-browse-link {
-  position: absolute;
-  visibility: hidden;
+  display:none;
+  
 }
 
-.metadata-browse-link:before {
-  content: "Selaa muita aineistoja joilla on sama kuvailutieto";
-  visibility: visible;
-}
