@@ -199,6 +199,9 @@ h5 {
 
 .metadata-browse-link {
   display:none;
-  
+ 
 }
 
+.field.hidden.oldmaps {display:none}
+
+#content > div > div:nth-child(2) > span.filter-value {display:none;}
